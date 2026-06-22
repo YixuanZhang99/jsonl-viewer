@@ -18,5 +18,22 @@
     "@types/vscode": "^1.85.0",
     "esbuild": "^0.21.0",
     "typescript": "^5.4.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "jsonl",
+        "aliases": ["JSON Lines", "jsonl"],
+        "extensions": [".jsonl", ".ndjson", ".jsonlines"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "jsonl",
+        "scopeName": "source.jsonl",
+        "path": "./syntaxes/jsonl.tmLanguage.json"
+      }
+    ]
   }
 }

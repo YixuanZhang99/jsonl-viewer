@@ -1,0 +1,5 @@
+{"id":1,"name":"Ada","tags":["math","cs"],"meta":{"active":true}}
+{"id":2,"name":"Linus","tags":["kernel"],"meta":{"active":false}}
+
+not a json line
+{"id":3,"name":"Grace","nested":{"a":{"b":[1,2,3]}}}
