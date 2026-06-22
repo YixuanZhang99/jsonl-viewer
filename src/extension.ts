@@ -29,6 +29,17 @@ export function activate(context: vscode.ExtensionContext): void {
 
   context.subscriptions.push(
     vscode.commands.registerCommand('jsonl.collapseAllInPreview', async () => {
+      const previewEditor = vscode.window.visibleTextEditors.find(
+        (e) => e.document.uri.scheme === PREVIEW_SCHEME
+      );
+      if (!previewEditor) {
+        vscode.window.showWarningMessage('请先打开 JSONL 美化预览');
+        return;
+      }
+      await vscode.window.showTextDocument(previewEditor.document, {
+        viewColumn: previewEditor.viewColumn,
+        preserveFocus: false,
+      });
       await vscode.commands.executeCommand('editor.foldAll');
     })
   );
