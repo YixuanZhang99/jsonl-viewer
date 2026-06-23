@@ -4,6 +4,8 @@
   "description": "提高 JSONL 文件可读性:语法高亮 + 可折叠的展开预览",
   "version": "0.0.1",
   "publisher": "local",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/YixuanZhang99/jsonl-viewer.git" },
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Programming Languages", "Visualization"],
   "main": "./dist/extension.js",
