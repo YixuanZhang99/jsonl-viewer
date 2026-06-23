@@ -6,4 +6,6 @@ esbuild.js
 tsconfig.json
 docs/**
 samples/**
+.superpowers/**
+.gitignore
 **/*.map
