@@ -8,6 +8,7 @@
   "repository": { "type": "git", "url": "https://github.com/YixuanZhang99/jsonl-viewer.git" },
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Programming Languages", "Visualization"],
+  "extensionKind": ["ui", "workspace"],
   "main": "./dist/extension.js",
   "activationEvents": ["onLanguage:jsonl"],
   "scripts": {
