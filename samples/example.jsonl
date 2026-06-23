@@ -3,3 +3,5 @@
 
 not a json line
 {"id":3,"name":"Grace","nested":{"a":{"b":[1,2,3]}}}
+{"id":4,"name":"Grace","nested":{"a":{"b":[1,2,3]}}}
+{"id":5,"name":"Doc","content":"# 标题\n\n这是一段 **加粗** 与 `行内代码`。\n\n- 列表项 A\n- 列表项 B\n\n```js\nconsole.log('hi')\n```\n\n[链接](https://example.com)"}

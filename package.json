@@ -12,7 +12,7 @@
     "compile": "node esbuild.js",
     "watch": "node esbuild.js --watch",
     "vscode:prepublish": "npm run compile",
-    "test": "node --experimental-strip-types --test 'src/test/format.test.ts'"
+    "test": "node --experimental-strip-types --test 'src/test/*.test.ts'"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -27,6 +27,11 @@
         "aliases": ["JSON Lines", "jsonl"],
         "extensions": [".jsonl", ".ndjson", ".jsonlines"],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "jsonl-pretty",
+        "aliases": ["JSONL 预览"],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
@@ -34,18 +39,34 @@
         "language": "jsonl",
         "scopeName": "source.jsonl",
         "path": "./syntaxes/jsonl.tmLanguage.json"
+      },
+      {
+        "language": "jsonl-pretty",
+        "scopeName": "source.jsonl-pretty",
+        "path": "./syntaxes/jsonl-pretty.tmLanguage.json"
       }
     ],
+    "configurationDefaults": {
+      "[jsonl-pretty]": {
+        "editor.wordWrap": "on"
+      }
+    },
     "commands": [
       { "command": "jsonl.openPreview", "title": "JSONL: 打开美化预览", "icon": "$(open-preview)" },
-      { "command": "jsonl.collapseAllInPreview", "title": "JSONL: 预览中全部折叠" }
+      { "command": "jsonl.collapseAllInPreview", "title": "JSONL: 预览中全部折叠", "icon": "$(collapse-all)" },
+      { "command": "jsonl.expandAllInPreview", "title": "JSONL: 预览中全部展开", "icon": "$(expand-all)" },
+      { "command": "jsonl.openFieldAsMarkdown", "title": "JSONL: 当前字段作为 Markdown 预览", "icon": "$(markdown)" }
     ],
     "menus": {
       "editor/title": [
-        { "command": "jsonl.openPreview", "when": "resourceLangId == jsonl", "group": "navigation" }
+        { "command": "jsonl.openPreview", "when": "resourceLangId == jsonl", "group": "navigation" },
+        { "command": "jsonl.collapseAllInPreview", "when": "resourceScheme == jsonl-pretty && !jsonl.previewCollapsed", "group": "navigation" },
+        { "command": "jsonl.expandAllInPreview", "when": "resourceScheme == jsonl-pretty && jsonl.previewCollapsed", "group": "navigation" },
+        { "command": "jsonl.openFieldAsMarkdown", "when": "resourceScheme == jsonl-pretty", "group": "navigation" }
       ],
       "editor/context": [
-        { "command": "jsonl.openPreview", "when": "resourceLangId == jsonl", "group": "navigation" }
+        { "command": "jsonl.openPreview", "when": "resourceLangId == jsonl", "group": "navigation" },
+        { "command": "jsonl.openFieldAsMarkdown", "when": "resourceScheme == jsonl-pretty", "group": "navigation" }
       ]
     },
     "configuration": {

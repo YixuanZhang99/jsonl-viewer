@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "JSONL Pretty Preview",
+  "scopeName": "source.jsonl-pretty",
+  "patterns": [{ "include": "source.json.comments" }]
+}
