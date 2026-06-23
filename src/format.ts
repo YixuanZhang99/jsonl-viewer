@@ -36,7 +36,7 @@ export function formatJsonl(input: string, options: FormatOptions): FormatResult
     try {
       const obj = JSON.parse(trimmed);
       recordCount++;
-      blocks.push(`// ─── 记录 #${recordCount} ───\n${JSON.stringify(obj, null, 2)}`);
+      blocks.push(`// ─── 记录 ${recordCount} ───\n${JSON.stringify(obj, null, 2)}`);
     } catch {
       blocks.push(`// ⚠ 第 ${lineNo} 行不是合法 JSON\n${raw.replace(/\r$/, '')}`);
     }

@@ -9,8 +9,8 @@ test('多条正常记录:编号、缩进、分隔', () => {
   const r = formatJsonl(input, OPTS);
   assert.equal(r.recordCount, 2);
   assert.equal(r.truncated, false);
-  assert.ok(r.text.includes('// ─── 记录 #1 ───'));
-  assert.ok(r.text.includes('// ─── 记录 #2 ───'));
+  assert.ok(r.text.includes('// ─── 记录 1 ───'));
+  assert.ok(r.text.includes('// ─── 记录 2 ───'));
   assert.ok(r.text.includes('  "a": 1'));
   assert.ok(r.text.includes('  "b": 2'));
 });
@@ -26,9 +26,9 @@ test('空行跳过且记录号连续', () => {
   const input = '{"a":1}\n\n   \n{"b":2}';
   const r = formatJsonl(input, OPTS);
   assert.equal(r.recordCount, 2);
-  assert.ok(r.text.includes('记录 #1'));
-  assert.ok(r.text.includes('记录 #2'));
-  assert.ok(!r.text.includes('记录 #3'));
+  assert.ok(r.text.includes('记录 1'));
+  assert.ok(r.text.includes('记录 2'));
+  assert.ok(!r.text.includes('记录 3'));
 });
 
 test('非法 JSON 行:警告注释 + 原文保留,且不影响后续', () => {
@@ -37,7 +37,7 @@ test('非法 JSON 行:警告注释 + 原文保留,且不影响后续', () => {
   assert.equal(r.recordCount, 2);
   assert.ok(r.text.includes('// ⚠ 第 2 行不是合法 JSON'));
   assert.ok(r.text.includes('not json'));
-  assert.ok(r.text.includes('记录 #2'));
+  assert.ok(r.text.includes('记录 2'));
 });
 
 test('超 maxRecords 截断', () => {
