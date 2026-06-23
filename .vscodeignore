@@ -7,5 +7,6 @@ tsconfig.json
 docs/**
 samples/**
 .superpowers/**
+.claude/**
 .gitignore
 **/*.map
